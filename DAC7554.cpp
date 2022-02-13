@@ -34,18 +34,6 @@
 // dac.Set(4, [0-4095]);
 
 // dac.Write();
-// Commands
-
-#define WRITE_INPUT_REGISTER 0
-#define UPDATE_OUTPUT_REGISTER 1
-#define WRITE_INPUT_REGISTER_UPDATE_ALL 2
-#define WRITE_INPUT_REGISTER_UPDATE_N 3
-#define POWER_DOWN_UP_DAC 4
-#define LOAD_CLEAR_CODE_REGISTER 5
-#define LOAD_LDAC_REGISTER 6
-#define RESET_POWER_ON 7
-#define SETUP_INTERNAL_REF 8
-
 
 using namespace daisy;
 
