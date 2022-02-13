@@ -1,6 +1,6 @@
 #pragma once
-#ifndef DSY_DEV_DAC_8568_H
-#define DSY_DEV_DAC_8568_H /**< Macro */
+#ifndef DSY_DEV_DAC_7554_H
+#define DSY_DEV_DAC_7554_H /**< Macro */
 #include <stdlib.h>
 #include <stdint.h>
 #include "daisy_core.h"
@@ -52,7 +52,7 @@ namespace daisy
 
         /** 
     Takes an argument for the pin cfg
-    \param pin_cfg should be a pointer to an array of Dac8568::NUM_PINS dsy_gpio_pins
+    \param pin_cfg should be a pointer to an array of Dac7554::NUM_PINS dsy_gpio_pins
     */
         void Init(/*dsy_gpio_pin* pin_cfg*/);
 
