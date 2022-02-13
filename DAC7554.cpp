@@ -9,16 +9,31 @@
 // Based on Code from Westlicht Performer   - https://westlicht.github.io/performer/
 // Port for Daisy by Making Sound Machines  - https://github.com/makingsoundmachines
 
-// Pin Names in Schematics
-//
-// Patch    Seed        STM32H7   DAC7554
-//
-// SCK      SPI1_SCK    PG11      SCLK - spi.init GPIO_InitStruct.Pin = GPIO_PIN_11;
-// DATA     SPI1_MOSI   PB5       DIN  - spi.init GPIO_InitStruct.Pin = GPIO_PIN_5
-// RESET    USB_HS_D+   PB15      n.c.
-// CMD      SPI1_MISO   PB4       SYNC
-// CS       SPI1_NSS    PG10      n.c.
+// Pins on Plinky Expander -
+// 16   RX       TX     15
+// 14   GND      CS     13
+// 12   GND      +12V   11
+// 10   MISO     CLK    9
+// 8    MOSI     -12V   7
+// 6    GND      +5V    5
+// 4    DM       DP     3
+// 2    +3v3     +3v3   1
 
+// Pins on Daisy Seed used in this configuration:
+// D7   CS
+// D8   SCLK
+// D9   MISO
+// D10  MOSI
+
+// Usage:
+// Dac7554 dac;
+// dac.Init();
+// dac.Set(1, [0-4095]);
+// dac.Set(2, [0-4095]);
+// dac.Set(3, [0-4095]);
+// dac.Set(4, [0-4095]);
+
+// dac.Write();
 // Commands
 
 #define WRITE_INPUT_REGISTER 0
@@ -96,7 +111,7 @@ void Dac7554::WriteDac7554(uint16_t  address, uint16_t data)
     dsy_gpio_write(&pin_sync, 0);
 
     uint8_t west_sid3 = (cmd >> 8) & 0xff;
-    uint8_t east_sid3 = (cmd >> 0) & 0xff;
+    uint8_t east_sid3 = cmd & 0xff;
 
     h_spi.BlockingTransmit(&west_sid3, 4);
     h_spi.BlockingTransmit(&east_sid3, 4);
